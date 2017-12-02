@@ -28,12 +28,12 @@ $attributes = [
 $factory = new ValidatorFactory($input, $rules, $attributes, 'make');
 
 //判断验证是否通过
-if ($factory->success()) {
+if ($factory->success {
     //通过
 } else {
     //未通过
     //输出错误消息
-    print_r($factory->errors); // 或者 $validator->errors();
+    print_r($factory->errors);
 }
 
 方法二:
@@ -48,12 +48,12 @@ $rules = [
 $factory = new ValidatorFactory($input, $rules, $attributes, 'validate');
 
 //判断验证是否通过
-if ($factory->success()) {
+if ($factory->success {
     //通过
 } else {
     //未通过
     //输出错误消息
-    print_r($factory->errors); // 或者 $validator->errors();
+    print_r($factory->errors);
 }
 
 ```
