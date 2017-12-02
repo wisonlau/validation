@@ -1,0 +1,21 @@
+{
+    "name": "wisonlau/validation",
+    "description": "Validation 简化无依赖版",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wisonlau",
+            "email": "12202206@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Wisonlau\\Validation\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0"
+    }
+}
