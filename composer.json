@@ -1,6 +1,6 @@
 {
     "name": "wisonlau/validation",
-    "description": "Validation 简化无依赖版",
+    "description": "Validation 无依赖版",
     "type": "library",
     "license": "MIT",
     "authors": [

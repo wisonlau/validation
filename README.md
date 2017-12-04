@@ -25,7 +25,7 @@ $attributes = [
 ];
 
 //初始化工厂对象
-$factory = new ValidatorFactory($input, $rules, $attributes, 'make');
+$factory = new ValidatorFactory($input, $rules, $attributes);
 
 //判断验证是否通过
 if ($factory->success {
@@ -166,6 +166,10 @@ String
 Timezone
 Unique (Database)
 URL
+Table (Database)
+Database (Database)
+Chinese
+Idcard
 ```
 
 ```
@@ -245,7 +249,7 @@ dimensions
 验证的文件必须是图片并且图片比例必须符合规则：
 
 'avatar' => 'dimensions:min_width=100,min_height=200'
-可用的规则为： min_width、 max_width 、 min_height 、 max_height 、 width 、 height 、 ratio。
+可用的规则为： min_width、 max_width 、 min_height 、 max_height 、 width 、 height。
 
 distinct
 验证数组时，指定的字段不能有任何重复值。
@@ -393,6 +397,19 @@ unique:table,column,except,idColumn
 
 url
 验证的字段必须是有效的 URL。
+
+Table
+验证的字段在给定的数据库是否存在
+
+Database
+验证的字段在给定的数据库是否是存在的数据库
+
+Chinese
+验证的字段必须是中文。
+
+idcard
+验证的字段必须是有效的 身份证。
+
 ```
 
 # License

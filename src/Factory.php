@@ -34,7 +34,7 @@ class Factory
     private $otherValueRules   = array('requiredIf', 'requiredUnless');
 
 
-    public function __construct($data, $rules, $attributes = null, $mode = 'validate', $messages = null, $lang = 'zh_cn')
+    public function __construct($data, $rules, $attributes = null, $mode = 'make', $messages = null, $lang = 'zh_cn')
     {
         $this->data    = $data;
         $this->rules   = $rules;
