@@ -28,7 +28,7 @@ $attributes = [
 $factory = new ValidatorFactory($input, $rules, $attributes);
 
 //判断验证是否通过
-if ($factory->success {
+if ($factory->success) {
     //通过
 } else {
     //未通过
@@ -48,7 +48,7 @@ $rules = [
 $factory = new ValidatorFactory($input, $rules, $attributes, 'validate');
 
 //判断验证是否通过
-if ($factory->success {
+if ($factory->success) {
     //通过
 } else {
     //未通过
