@@ -51,6 +51,7 @@ class Validator implements ValidatorInterface
     // 验证的字段必须是给定日期后的值。这个日期将会通过 PHP 函数 strtotime 来验证。
     public function afterValidate($value, $afterField)
     {
+        $afterField = $afterField[0];
         if (! is_string($value) && ! is_numeric($value) && ! $value instanceof \DateTimeInterface)
         {
             return false;
@@ -79,6 +80,7 @@ class Validator implements ValidatorInterface
     // 验证的字段必须等于给定日期之后的值。
     public function afterOrEqualValidate($value, $afterOrEqualField)
     {
+        $afterOrEqualField = $afterOrEqualField[0];
         if (! is_string($value) && ! is_numeric($value) && ! $value instanceof \DateTimeInterface)
         {
             return false;
@@ -142,6 +144,7 @@ class Validator implements ValidatorInterface
     // 验证的字段必须是给定日期之前的值。这个日期将会通过 PHP 函数 strtotime 来验证。
     public function beforeValidate($value, $beforeField)
     {
+        $beforeField = $beforeField[0];
         if (! is_string($value) && ! is_numeric($value) && ! $value instanceof \DateTimeInterface)
         {
             return false;
@@ -170,6 +173,7 @@ class Validator implements ValidatorInterface
     // 验证的字段必须是给定日期之前或之前的值。这个日期将会使用 PHP 函数 strtotime 来验证。
     public function beforeOrEqualValidate($value, $beforeOrEqualField)
     {
+        $beforeOrEqualField = $beforeOrEqualField[0];
         if (! is_string($value) && ! is_numeric($value) && ! $value instanceof \DateTimeInterface)
         {
             return false;
@@ -226,7 +230,7 @@ class Validator implements ValidatorInterface
     // 验证的字段必须和 foo_confirmation 的字段值一致。例如，如果要验证的字段是 password，输入中必须存在匹配的 password_confirmation 字段。
     public function confirmedValidate($value, $confirmedField)
     {
-        return $value == $confirmedField ? true : false;
+        return $value == $confirmedField[0] ? true : false;
     }
 
     // 验证的字段值必须是通过 PHP 函数 strtotime 校验的有效日期。
@@ -249,6 +253,7 @@ class Validator implements ValidatorInterface
     // 验证的字段必须等于给定的日期。该日期会被传递到 PHP 函数 strtotime。
     public function dateEqualsValidate($value, $dateEqualsField)
     {
+        $dateEqualsField = $dateEqualsField[0];
         if (! is_string($value) && ! is_numeric($value) && ! $value instanceof \DateTimeInterface)
         {
             return false;
@@ -277,6 +282,7 @@ class Validator implements ValidatorInterface
     // 验证的字段必须与给定的格式相匹配。你应该只使用 date 或 date_format 其中一个用于验证，而不应该同时使用两者。
     public function dateFormatValidate($value, $dateEqualsField)
     {
+        $dateEqualsField = $dateEqualsField[0];
         if (! is_string($value) && ! is_numeric($value))
         {
             return false;
@@ -301,6 +307,7 @@ class Validator implements ValidatorInterface
     // 验证的字段必须是数字，并且必须具有确切的值。
     public function digitsValidate($value, $digitsField)
     {
+        $digitsField = array_pop($digitsField);
         return ! preg_match('/[^0-9]/', $value)
             && strlen((string) $value) == $digitsField;
     }
@@ -366,6 +373,7 @@ class Validator implements ValidatorInterface
     // 验证的字段必须包含在给定的值列表中。因为这个规则通常需要你 implode 一个数组。
     public function inValidate($value, $inField)
     {
+        $inField = array_pop($inField);
         if(is_array($value))
         {
             if (is_array($inField))
@@ -401,6 +409,7 @@ class Validator implements ValidatorInterface
     // 验证的字段必须存在于另一个字段（anotherfield）的值中。
     public function inArrayValidate($value, $inArrayField)
     {
+        $inArrayField = array_pop($inArrayField);
         if( is_array($value) )
         {
             if (in_array($inArrayField, $value))
@@ -469,7 +478,7 @@ class Validator implements ValidatorInterface
     {
         $type = $this->validateType($value);
         $maxField = $maxField[0];
-        
+
         switch ($type)
         {
             case 'array':
@@ -491,7 +500,7 @@ class Validator implements ValidatorInterface
     {
         $type = $this->validateType($value);
         $minField = $minField[0];
-        
+
         switch ($type)
         {
             case 'array':
@@ -529,6 +538,7 @@ class Validator implements ValidatorInterface
     // 验证的字段必须存在于输入数据中，但可以为空。
     public function presentValidate($value, $presentField)
     {
+        $presentField = array_pop($presentField);
         if (is_null($value))
         {
             return true;
@@ -540,6 +550,7 @@ class Validator implements ValidatorInterface
     // 验证的字段必须与给定的正则表达式匹配。注意： 当使用 regex 规则时，你必须使用数组，而不是使用 | 分隔符，特别是如果正则表达式包含 | 字符。
     public function regexValidate($value, $regexField)
     {
+        $regexField = array_pop($regexField);
         if (! is_string($value) && ! is_numeric($value)) {
             return false;
         }
@@ -617,6 +628,7 @@ class Validator implements ValidatorInterface
     // 验证的字段必须具有与给定值匹配的大小。对于字符串来说，value 对应于字符数。对于数字来说，value 对应于给定的整数值。对于数组来说， size 对应的是数组的 count 值。对文件来说，size 对应的是文件大小（单位 kb ）。
     public function sizeValidate($value, $sizeField)
     {
+        $sizeField = array_pop($sizeField);
         if (is_array($value))
         {
             return count($value, 1) == $sizeField ? true : false;
@@ -773,6 +785,7 @@ class Validator implements ValidatorInterface
     // 验证的文件必须与给定 MIME 类型之一匹配。text/plain,...
     public function mimeTypesValidate($value, $mimeTypesField)
     {
+        $mimeTypesField = array_pop($mimeTypesField);
         if (empty($value))
         {
             return false;
@@ -964,6 +977,7 @@ class Validator implements ValidatorInterface
     // 验证是否为中文
     public function chineseValidate($value, $encode = 'gbk')
     {
+        $encode = array_pop($encode);
         switch ($encode)
         {
             case "utf-8":
