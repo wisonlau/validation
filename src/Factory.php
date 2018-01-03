@@ -60,7 +60,7 @@ class Factory
                     $explodeRules  = array_merge($explodeRules, explode(',', $pop_arr));
                 }
 
-                $valid = false;
+                $valid = true;
                 if (in_array($attribute, array_keys($this->data)))
                 {
                     $compare = $explodeRules[0] . 'Validate';
@@ -142,7 +142,7 @@ class Factory
                     $explodeRules  = array_merge($explodeRules, explode(',', $pop_arr));
                 }
 
-                $valid = false;
+                $valid = true;
                 if (in_array($attribute, array_keys($this->data)))
                 {
                     $compare = $explodeRules[0] . 'Validate';
