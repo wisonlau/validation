@@ -468,7 +468,8 @@ class Validator implements ValidatorInterface
     public function maxValidate($value, $maxField)
     {
         $type = $this->validateType($value);
-
+        $maxField = $maxField[0];
+        
         switch ($type)
         {
             case 'array':
@@ -489,7 +490,8 @@ class Validator implements ValidatorInterface
     public function minValidate($value, $minField)
     {
         $type = $this->validateType($value);
-
+        $minField = $minField[0];
+        
         switch ($type)
         {
             case 'array':
